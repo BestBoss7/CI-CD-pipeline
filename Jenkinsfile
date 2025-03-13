@@ -12,7 +12,7 @@ pipeline {
         }
         stage('Build Maven Project') {
             steps {
-                sh 'mvn clean package'
+                bat 'mvn clean package'
             }
         }
         stage('Docker Login') {
@@ -20,18 +20,18 @@ pipeline {
                 withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', 
                                                   usernameVariable: 'DOCKER_USERNAME', 
                                                   passwordVariable: 'DOCKER_PASSWORD')]) {
-                    sh 'echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin'
+                    bat 'docker login -u %DOCKER_USERNAME% -p %DOCKER_PASSWORD%'
                 }
             }
         }
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t $DOCKER_IMAGE .'
+                bat 'docker build -t %DOCKER_IMAGE% .'
             }
         }
         stage('Push Docker Image') {
             steps {
-                sh 'docker push $DOCKER_IMAGE'
+                bat 'docker push %DOCKER_IMAGE%'
             }
         }
     }
