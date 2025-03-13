@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/BestBoss7/CI-CD-pipeline.git'
+                git branch: 'main', url 'https://github.com/BestBoss7/CI-CD-pipeline.git'
             }
         }
         stage('Build Maven Project') {
