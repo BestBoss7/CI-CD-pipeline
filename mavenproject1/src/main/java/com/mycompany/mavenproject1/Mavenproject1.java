@@ -2,7 +2,6 @@ package com.mycompany.mavenproject1;
 
 import java.util.Calendar;
 
-
 public class Mavenproject1 {
     public static void main(String[] args) {
         // Get current hour
@@ -14,5 +13,15 @@ public class Mavenproject1 {
 
         // Display the message
         System.out.println(greeting + ", Jayant Mangla, Welcome to COMP367");
+
+        // Keep the application running
+        while (true) {
+            try {
+                Thread.sleep(10000); // Keeps the application alive
+            } catch (InterruptedException e) {
+                System.out.println("Application interrupted!");
+                break;
+            }
+        }
     }
 }
