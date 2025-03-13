@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        DOCKER_IMAGE = 'brael/image1'
+        DOCKER_IMAGE = 'brael/maven-webapp'
     }
     stages {
         stage('Checkout') {
