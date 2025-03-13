@@ -10,9 +10,11 @@ pipeline {
                     url: 'https://github.com/BestBoss7/CI-CD-pipeline.git'
             }
         }
-        stage('Build Maven Project') {
+        stage('Build') {
             steps {
-                bat 'mvn clean package'
+                dir('mavenproject1') {  
+                    bat 'mvn clean package'
+                }
             }
         }
         stage('Docker Login') {
